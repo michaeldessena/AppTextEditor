@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../common/names.dart';
+import '../common/file_path.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -34,6 +35,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            ElevatedButton(onPressed: () async {
+              LocalStorage loginUserStorage = LocalStorage();
+              dynamic result = await loginUserStorage.readUsers();
+              print(result);
+            }, child: Text('Read file login')),
             const Text(
               'You have pushed the button this many times:',
             ),

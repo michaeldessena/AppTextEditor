@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../common/names.dart';
 import '../common/utils.dart';
+import '../common/file_path.dart';
 
 import '../homepage/homepage.dart';
 
-import 'signin.dart';
+import 'signin_page.dart';
 import 'user.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -97,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       LOGIN_PAGE_LOGIN_BUTTON_TEXT,
                       style: TextStyle(fontSize: 20),
                     ),
-                    onPressed: () {
+                    onPressed: () async {
                       String email = emailfield.text;
                       String password = passwordfield.text;
 
@@ -109,6 +110,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       //    else dispaly a message
                       User loginUser = User(email, password);
                       print(loginUser.toJson());
+
+                      // add try to connect
+
+                      LocalStorage loginUserStorage = LocalStorage();
+                      await loginUserStorage.writeUser(loginUser);
 
                       Navigator.pushReplacement(
                           context,
