@@ -153,55 +153,7 @@ class _SigninScreenState extends State<SigninScreen> {
                       SIGNIN_PAGE_SIGNIN_BUTTON_TEXT,
                       style: TextStyle(fontSize: 20),
                     ),
-                    onPressed: () {
-                      String email = emailfield.text;
-                      String password = passwordfield.text;
-                      String passwordrepeat = passwordrepeatfield.text;
-
-                      print(email);
-                      print(password);
-                      print(passwordrepeat);
-
-                      // check email format is ok
-                      if (!isEmailValid(email)) {
-                        setState(() {
-                          emailNotValid = true;
-                        });
-                      }
-                      // check password format is ok
-                      else if (!isPasswordFormatOk(password)) {
-                        setState(() {
-                          emailNotValid = false;
-                          passwordNotValid = true;
-                        });
-                      }
-                      // check passwords are matching
-                      else if (!(password == passwordrepeat)) {
-                        setState(() {
-                          emailNotValid = false;
-                          passwordNotValid = false;
-                          passwordNotMatching = true;
-                        });
-                      }
-                      // if all check passed add the user to the database
-                      // TODO: Add the database part
-                      else {
-                        setState(() {
-                          emailNotValid = false;
-                          passwordNotValid = false;
-                          passwordNotMatching = false;
-                        });
-
-                        User signinUser = User(email, password);
-                        print(signinUser.toJson());
-
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const MyHomePage()),
-                        );
-                      }
-                    },
+                    onPressed: _signInButtonOnPressed,
                   ),
                 ),
               ),
@@ -214,5 +166,54 @@ class _SigninScreenState extends State<SigninScreen> {
         ),
       ),
     );
+  }
+
+  void _signInButtonOnPressed() {
+    String email = emailfield.text;
+    String password = passwordfield.text;
+    String passwordrepeat = passwordrepeatfield.text;
+
+    print(email);
+    print(password);
+    print(passwordrepeat);
+
+    // check email format is ok
+    if (!isEmailValid(email)) {
+      setState(() {
+        emailNotValid = true;
+      });
+    }
+    // check password format is ok
+    else if (!isPasswordFormatOk(password)) {
+      setState(() {
+        emailNotValid = false;
+        passwordNotValid = true;
+      });
+    }
+    // check passwords are matching
+    else if (!(password == passwordrepeat)) {
+      setState(() {
+        emailNotValid = false;
+        passwordNotValid = false;
+        passwordNotMatching = true;
+      });
+    }
+    // if all check passed add the user to the database
+    // TODO: Add the database part
+    else {
+      setState(() {
+        emailNotValid = false;
+        passwordNotValid = false;
+        passwordNotMatching = false;
+      });
+
+      User signinUser = User(email, password);
+      print(signinUser.toJson());
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const MyHomePage()),
+      );
+    }
   }
 }

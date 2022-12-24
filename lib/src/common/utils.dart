@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
+late double SCREENWIDTH;
+late double SCREENHEIGHT;
+
 double getScreenWidth(BuildContext context){
-  return MediaQuery.of(context).size.width;
+  SCREENWIDTH = MediaQuery.of(context).size.width;
+  return SCREENWIDTH;
 }
 
 double getScreenHeight(BuildContext context){
-  return MediaQuery.of(context).size.height;
+  SCREENHEIGHT = MediaQuery.of(context).size.height;
+  return SCREENHEIGHT;
 }
 

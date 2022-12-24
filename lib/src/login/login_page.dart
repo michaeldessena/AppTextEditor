@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import '../common/names.dart';
@@ -98,29 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       LOGIN_PAGE_LOGIN_BUTTON_TEXT,
                       style: TextStyle(fontSize: 20),
                     ),
-                    onPressed: () async {
-                      String email = emailfield.text;
-                      String password = passwordfield.text;
-
-                      print(email);
-                      print(password);
-
-                      // TODO search user in database:
-                      //    if ok pass to --> Homepage
-                      //    else dispaly a message
-                      User loginUser = User(email, password);
-                      print(loginUser.toJson());
-
-                      // add try to connect
-
-                      LocalStorage loginUserStorage = LocalStorage();
-                      await loginUserStorage.writeUser(loginUser);
-
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const MyHomePage()));
-                    },
+                    onPressed: _loginButtonOnPressed,
                   ),
                 ),
               ),
@@ -198,5 +178,27 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> _loginButtonOnPressed() async {
+    String email = emailfield.text;
+    String password = passwordfield.text;
+
+    print(email);
+    print(password);
+
+    // TODO search user in database:
+    //    if ok pass to --> Homepage
+    //    else dispaly a message
+    User loginUser = User(email, password);
+    print(loginUser.toJson());
+
+    // add try to connect
+
+    LocalStorage loginUserStorage = LocalStorage();
+    await loginUserStorage.writeUser(loginUser);
+    //sleep(Duration(seconds: 5)); //TODO: remove.. used to test the await 
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const MyHomePage()));
   }
 }

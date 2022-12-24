@@ -14,7 +14,7 @@ const String SIGNIN_PAGE_EMAIL = 'Insert your email';
 const String SIGNIN_PAGE_PASSWORD = 'Insert a password';
 const String SIGNIN_PAGE_PASSWORD_REPET = 'Repeat your password';
 const String SIGNIN_PAGE_SIGNIN_BUTTON_TEXT = 'Sign in';
-const String SIGNIN_PAGE_TEXT_EMAIL_FORMAT_NO_VALID = 'Email is not valid ';
+const String SIGNIN_PAGE_TEXT_EMAIL_FORMAT_NO_VALID = 'Email format is not valid';
 const String SIGNIN_PAGE_TEXT_PASSWORD_FORMAT_NO_VALID = 
 '''Password format is not valid. Required:
 \t\t●\t at least one upper case
@@ -22,6 +22,9 @@ const String SIGNIN_PAGE_TEXT_PASSWORD_FORMAT_NO_VALID =
 \t\t●\t at least one number
 \t\t●\t at least one [!@#\$&*~]
 \t\t●\t at least 8 characters''';
-const String SIGNIN_PAGE_TEXT_PASSWORD_NOT_MATCHING = 'The two password are not matching';
+const String SIGNIN_PAGE_TEXT_PASSWORD_NOT_MATCHING = 'The passwords are not matching';
 const String SIGNIN_PAGE_GENERIC_ERROR = 'Something went wrong';
 const String SIGNIN_PAGE_UPPER_TEXT = 'Create your account';
+
+// Settings page
+const String SETTINGS_PAGE_TITLE = 'Settings';
